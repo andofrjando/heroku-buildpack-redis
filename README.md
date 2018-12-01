@@ -1,5 +1,8 @@
 # Heroku buildpack: Redis
 
+## Fork details
+This fork allows use of RedisGreen TLS with heroku dynos.
+
 This is a [Heroku buildpack](http://devcenter.heroku.com/articles/buildpacks) that
 allows an application to use an [stunnel](http://stunnel.org) to connect securely to
 Heroku Redis.  It is meant to be used in conjunction with other buildpacks.
@@ -12,7 +15,7 @@ available when using the hobby tier.
 Then set this buildpack as your initial buildpack with:
 
 ```console
-$ heroku buildpacks:add -i 1 heroku/redis
+$ heroku buildpacks:add -i 1 https://github.com/andofrjando/heroku-buildpack-redis.git
 ```
 
 Then confirm you are using this buildpack as well as your language buildpack like so:
@@ -20,7 +23,7 @@ Then confirm you are using this buildpack as well as your language buildpack lik
 ```console
 $ heroku buildpacks
 === frozen-potato-95352 Buildpack URLs
-1. https://github.com/heroku/heroku-buildpack-redis.git
+1. https://github.com/andofrjando/heroku-buildpack-redis.git
 2. heroku/python
 ```
 
@@ -77,7 +80,7 @@ will need to explicitly tell the buildpack that you need an Stunnel by setting t
 config var to a list of the appropriate config vars:
 
     $ heroku config:add REDIS_STUNNEL_URLS="CACHE_URL SESSION_STORE_URL"
-    
+
 ## Using the edge version of the buildpack
 
 The `heroku/redis` buildpack points to the latest stable version of the buildpack published in the [Buildpack Registry](https://devcenter.heroku.com/articles/buildpack-registry). To use the latest version of the buildpack (the code in this repository), run the following command:
